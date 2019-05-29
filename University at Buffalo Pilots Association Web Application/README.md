@@ -2,7 +2,7 @@
 
 A web application for the UB Pilots Association. 
 
-Team Members: Felipe Canales, Arun Mavumkal, Derrick Delacruz
+Team Members: Felipe Canales, Arun Mavumkal, Derrick Delacruz <br>
 Original GitHub Link: https://github.com/amavumkal/ubpilots
 
 ## Setup 
