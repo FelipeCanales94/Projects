@@ -1,0 +1,82 @@
+.mat-primary {
+    background-color: #F8F8F8;
+}
+
+.mat-accent {
+    background-color: #005bbb;
+}
+
+.mat-icon-button {
+    color:  #006570;
+}
+
+.container {
+
+    margin-right: 20px;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+#logo-img {
+    height: 50px;
+}
+
+#nav-list {
+    margin-top: 10px;
+}
+
+.navbar-brand {
+    float: left;
+}
+
+.container  {
+    width: 80%;
+}
+
+.nav {
+    color: #ffffff;
+}
+
+#mainNav {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-weight: 700;
+    font-family: 'Montserrat';
+}
+
+#mainNav .navbar-brand {
+    color: #fff;
+}
+
+input[type="text"]{
+    padding: 0 5px;
+    width: 155px; 
+    font-size:15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+input[type="password"]{
+    padding: 0 5px;
+    width: 155px; 
+    font-size:15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+::-webkit-input-placeholder{
+    padding-top: 5px;
+    font-size: 15px;  
+}
+
+#submit-btn{
+    padding-top: 1px;
+    padding-right: 10px;
+    color: #005bbb;
+}
+
+#signup-btn{
+    padding-top: 1px;
+    padding-right: 50px;
+    color: #005bbb;
+}

@@ -1,0 +1,36 @@
+<div *ngIf="showMenu">
+    <mat-toolbar color="primary">
+      <span><img (click)="goHome()" id="logo-img" src="../../../assets/logo/ubpa_logo_blue.png"></span>
+      <span class="spacer"></span>
+      <button *ngIf="!showLoginButton" mat-icon-button [mat-menu-trigger-for]="menu">
+        <mat-icon *ngIf="!showLoginButton">account_box</mat-icon>
+      </button>
+  
+      <div class="row">
+          <div class="col s10 m8 offset-m2 offset-s1">    
+            <input *ngIf="showLoginButton" (keyup.enter)="submit()" [style.border-top]="isInvlaidCreds ? '1px solid red' : ''" placeholder="User Name" type="text"  id="email" (keyup)=setUser($event)>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 m8 offset-m2 offset-s1">
+            <input *ngIf="showLoginButton" (keyup.enter)="submit()" id="password" placeholder="Password" type="password" (keyup)=setPassword($event)>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s4 m7 offset-s1 offset-m2">
+              <button *ngIf="showLoginButton" id="submit-btn" mat-icon-button  (click)="submit()" class="waves-effect waves-light btn" >Login</button>
+              <button *ngIf="showLoginButton" id="signup-btn" mat-icon-button class="waves-effect waves-light btn" routerLink="/signup">Signup</button>              
+          </div>
+          </div>
+      
+    </mat-toolbar>
+    <mat-menu x-position="before" #menu="matMenu" >
+    <!-- <button *ngIf="showLoginButton" (click)="loginClick()" mat-menu-item>Login</button> -->
+      <button *ngIf="isAdmin" routerLink="/admin" mat-menu-item>Admin Menu</button>
+      <button  *ngIf="showUserMenu" (click)="signOut()" mat-menu-item>Sign Out</button>
+    </mat-menu>
+  
+    <div [hidden]= "!showAlert" *ngIf =  "!isLoggedIn"class="alert alert-danger">
+      {{errorMessage}}
+    </div>
+  </div>  
