@@ -2,7 +2,8 @@
 
 A web application for the UB Pilots Association. 
 
-Team Members: Arun Mavumkal, Derrick Delacruz
+Team Members: Felipe Canales, Arun Mavumkal, Derrick Delacruz
+Original GitHub Link: https://github.com/amavumkal/ubpilots
 
 ## Setup 
 1. Start node/express development server. (See README in /backend)
