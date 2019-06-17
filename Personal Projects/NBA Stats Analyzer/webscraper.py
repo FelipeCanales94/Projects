@@ -7,7 +7,7 @@ from os.path import join as pjoin
 # TODO: Separate away games from home games.
 # TODO: Clean up data. No need for Date, Age, ...etc
 # TODO: Organize organize organize! Still have a long way to go
-# TODO: find a way to get all shots taken by a player/team
+# TODO: Find a way to get all shot coords taken by a player/team and what type of shot they took
 
 
 # global #
