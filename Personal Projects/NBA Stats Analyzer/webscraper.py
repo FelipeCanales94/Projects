@@ -152,11 +152,11 @@ def getTeamRoster(team_name):
 
 
 # testing
-individualStats('D\'Angelo Russell')
-individualStats('Joe Harris')
-individualStats('Caris Levert')
-
-for x in team_abbreviations.keys():
+# individualStats('D\'Angelo Russell')
+# individualStats('Joe Harris')
+# individualStats('Caris Levert')
+#
+# for x in team_abbreviations.keys():
     getTeamRoster(x)
 
 
