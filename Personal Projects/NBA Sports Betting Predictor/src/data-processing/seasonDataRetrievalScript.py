@@ -11,7 +11,7 @@ class SeasonDataRetrievalScript:
     #TODO: Finish this webscraper -> get all archived data -> check for more features
 
     def __init__(self):
-        self.csv_headers = ['Date', 'ROT' 'Winning Team', '1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter', 'Final', 'ML']
+        self.csv_headers = ['Date', 'ROT', 'Winning Team', '1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter', 'Final', 'ML']
     
     def retrieveOldOdds(self):
 
@@ -19,12 +19,14 @@ class SeasonDataRetrievalScript:
         
         date = datetime.date(2014,10,28) # first day of '14 season
         path = str(Path(os.path.dirname(os.path.realpath(__file__))).parent.parent) + '/data/seasonOddsDatasets/'
+        odds_year = str(date.year) + '-' + str(date.year + 1)
+        directory_name = pjoin(path,  odds_year + '.csv')  # puts csv in team directory
+        csv_writer = csv.writer(open(directory_name, 'w'))
+        csv_writer.writerow(self.csv_headers)
         
-        while date != datetime.date(2014,10,29):
-            odds_year = str(date.year) + '-' + str(date.year + 1)
-            directory_name = pjoin(path,  odds_year + '.csv')  # puts csv in team directory
-            csv_writer = csv.writer(open(directory_name, 'w'))
-            
+        
+        while date != datetime.date(2014,11,30):
+ 
             # skip months may-september
             if date.month == 5:
                 date = datetime.date(date.year,10,25)
@@ -36,14 +38,15 @@ class SeasonDataRetrievalScript:
             team_names = [th.getText() for th in bsoup.findAll('span', {'class':'GameRows_participantBox__0WCRz'})]
             team_final_scores = [th.getText() for th in bsoup.findAll('div', {'class':'GameRows_scores__YkN24'})]
             team_rot = [th.getText() for th in bsoup.findAll('span', {'class':'GameRows_smallNumber__q50_o'})]
-            team_scoreboards = [th.getText() for th in bsoup.findAll('div', {'class':'BoxScore_scoreboardColumn__x0cEb'}) if len(th.getText()) > 6] 
+            team_scoreboards = [th.getText() for th in bsoup.findAll('div', {'class':'BoxScore_scoreboardColumn__x0cEb'}) if len(th.getText()) > 0] 
             quarter_scores_processed = []
             away_scores = []
             home_scores = []
+           
 
 
             for i in range(len(team_scoreboards)):
-                if i % 4 == 0 and i != 0: # skip totals
+                if i % 4 == 0 and i != 0: # start of scoreboard for new game
                     quarter_scores_processed.append(away_scores)
                     quarter_scores_processed.append(home_scores)
                     away_scores = []
@@ -57,10 +60,14 @@ class SeasonDataRetrievalScript:
 
             quarter_scores_processed.append(away_scores)
             quarter_scores_processed.append(home_scores)
-           
 
             for i in range(len(team_names)):
-                csv_writer.writerow([team_names[i], team_rot[i], quarter_scores_processed[i][0], quarter_scores_processed[i][1], quarter_scores_processed[i][2], quarter_scores_processed[i][3], team_final_scores[i]])
+                away_home = 'a'
+                if i % 2 != 0:
+                    away_home = 'h'
+                
+
+                csv_writer.writerow([team_names[i], team_rot[i], away_home, quarter_scores_processed[i][0], quarter_scores_processed[i][1], quarter_scores_processed[i][2], quarter_scores_processed[i][3], team_final_scores[i]])
             
             date = date + datetime.timedelta(days=1)
 
