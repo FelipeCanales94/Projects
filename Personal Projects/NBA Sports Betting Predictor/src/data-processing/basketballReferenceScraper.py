@@ -59,16 +59,16 @@ def getTeamStats(team_name):
     bsoup = soup(uReq(html), 'html.parser')
     tables = bsoup.find('div', {'id':'div_team_and_opponent'})
     
-    table = bsoup.find("tbody")  # get information on table
-    num_rows = len(table.findAll('tr'))  # find number of rows
-    # get table header and write to csv
-    header = [th.getText() for th in bsoup.find('thead').findAll('tr', limit=2)[0].findAll('th')][1:]
-    csv_writer.writerow(header)
+    # table = bsoup.find("tbody")  # get information on table
+    # num_rows = len(table.findAll('tr'))  # find number of rows
+    # # get table header and write to csv
+    # header = [th.getText() for th in bsoup.find('thead').findAll('tr', limit=2)[0].findAll('th')][1:]
+    # csv_writer.writerow(header)
 
-    # get all player stats and write to a csv file
-    for row in range(num_rows):
-        player_stats = [td.getText() for td in table.findAll('tr')[row].findAll('td')]
-        csv_writer.writerow(player_stats)
+    # # get all player stats and write to a csv file
+    # for row in range(num_rows):
+    #     player_stats = [td.getText() for td in table.findAll('tr')[row].findAll('td')]
+    #     csv_writer.writerow(player_stats)
 
 # web scraping function to get an individual player's stats for all 82 regular season games and write to a csv file
 def individualStats(player_name):
